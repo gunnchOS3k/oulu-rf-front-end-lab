@@ -2,8 +2,8 @@ from pathlib import Path
 import numpy as np
 import matplotlib; matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-from oulu_rf.link_budget import fspl_db, link_budget
-from oulu_rf.lna_noise_gain import nf_to_noise_temp
+from gunnchos_rf.link_budget import fspl_db, link_budget
+from gunnchos_rf.lna_noise_gain import nf_to_noise_temp
 
 ROOT = Path(__file__).resolve().parents[1]
 FIG=ROOT/'results/figures'; FIG.mkdir(parents=True, exist_ok=True)
