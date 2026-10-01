@@ -1,64 +1,65 @@
 {
   "schema": "gunnchos.surfacekit.v2",
   "measured_topology": false,
-  "diagram_note": "Reading aid built from repository headings. It is not a measured topology and it is not a live system.",
+  "diagram_note": "Calculated reference from results/tables and the formulas in src/gunnchos_rf. The link-budget and LNA lines are repository table text, not a measured over-the-air link.",
   "nodes": [
     {
-      "id": "overview",
-      "label": "Overview"
+      "id": "fspl",
+      "label": "Free-space path"
     },
     {
-      "id": "what-this-is",
-      "label": "What this is"
+      "id": "budget",
+      "label": "Link budget"
     },
     {
-      "id": "why-wireless-engineering-readiness-cares",
-      "label": "Why wireless engineering readiness cares"
-    },
-    {
-      "id": "beginner-mental-model",
-      "label": "Beginner mental model"
+      "id": "lna",
+      "label": "LNA noise"
     }
   ],
   "rows": [
     {
-      "source": "README.md",
-      "scenario_id": "Overview",
-      "site_id": "Oulu preparation",
-      "ethical_framing": "# gunnchOS RF Front-End Lab > This repo is part of the **gunnchOS wireless engineering spine**: hands-on labs that strengthen the technical foundation behind 7GC, AI-RAN, RF, DSP, MIMO, measurement, and **6G PhD readiness** for target wireless communications engineering programs. Not affiliated with any university."
+      "source": "src/gunnchos_rf/link_budget.py",
+      "scenario_id": "FSPL formula",
+      "evidence_class": "educational_code",
+      "ethical_framing": "fspl_db is 32.45 + 20*log10(d_km) + 20*log10(f_mhz). link_budget adds gains and subtracts losses from tx_dbm.",
+      "formula": "32.45 + 20*log10(d_km) + 20*log10(f_mhz)"
     },
     {
-      "source": "README.md",
-      "scenario_id": "What this is",
-      "site_id": "Oulu preparation",
-      "ethical_framing": "Research and teaching lab for **target wireless communications engineering programs**-aligned skills \u2014 built as an independent portfolio project."
+      "source": "results/tables/link_budget.md",
+      "scenario_id": "Link budget table",
+      "evidence_class": "calculated_reference",
+      "ethical_framing": "# Link budget FSPL 1km 2.4GHz = 100.1 dB Rx=-75.05422483423212 dBm",
+      "table_text": "FSPL 1km 2.4GHz = 100.1 dB; Rx=-75.05422483423212 dBm"
     },
     {
-      "source": "README.md",
-      "scenario_id": "Why wireless engineering readiness cares",
-      "site_id": "Oulu preparation",
-      "ethical_framing": "Link budgets, matching, filters, LNAs \u2014 complements gunnchos-hardware-industrial-design."
+      "source": "results/tables/lna_tradeoff.md",
+      "scenario_id": "LNA noise table",
+      "evidence_class": "calculated_reference",
+      "ethical_framing": "# LNA Noise temp NF=2dB: 169.6 K",
+      "table_text": "Noise temp NF=2dB: 169.6 K"
     },
     {
-      "source": "README.md",
-      "scenario_id": "Beginner mental model",
-      "site_id": "Oulu preparation",
-      "ethical_framing": "Start with `docs/learning_notes.md`, run `make e2e`, open `results/figures/`."
+      "source": "src/gunnchos_rf/lna_noise_gain.py",
+      "scenario_id": "LNA noise function",
+      "evidence_class": "educational_code",
+      "ethical_framing": "nf_to_noise_temp uses t0 default 290 and returns t0*(10**(nf_db/10)-1).",
+      "t0_default": "290"
     },
     {
-      "source": "README.md",
-      "scenario_id": "Research question",
-      "site_id": "Oulu preparation",
-      "ethical_framing": "See `paper/draft.md`."
-    },
-    {
-      "source": "README.md",
-      "scenario_id": "Commands",
-      "site_id": "Oulu preparation",
-      "ethical_framing": "make install && make test && make e2e"
+      "source": "src/gunnchos_rf/wilkinson_divider.py",
+      "scenario_id": "Wilkinson divider",
+      "evidence_class": "educational_code",
+      "ethical_framing": "wilkinson_z returns z0 * 1.414 with z0 default 50.",
+      "z0_default": "50"
     }
   ],
-  "sources": [],
+  "sources": [
+    "src/gunnchos_rf/link_budget.py",
+    "results/tables/link_budget.md",
+    "results/tables/lna_tradeoff.md",
+    "src/gunnchos_rf/lna_noise_gain.py",
+    "src/gunnchos_rf/wilkinson_divider.py"
+  ],
   "sections": [
     {
       "id": "overview",
@@ -104,7 +105,7 @@
     "docs/diagrams/README.md",
     "docs/learning_notes.md"
   ],
-  "methods": "",
+  "methods": "Methods are the formulas in src/gunnchos_rf/link_budget.py and lna_noise_gain.py. The numbers on this page are copied from results/tables/link_budget.md and results/tables/lna_tradeoff.md. They are calculated reference lines, not a measured link.",
   "cards": [],
   "runtime_mode": "PRECOMPUTED",
   "runtime_boot": false
