@@ -1,0 +1,21 @@
+{
+  "repo": "oulu-rf-front-end-lab",
+  "productName": "RF front-end lab",
+  "family": "Oulu preparation",
+  "classification": "STATIC_RESEARCH_SURFACE_WORKER",
+  "acceptedSha": "6d0d6852192c745a996f343ac2a08c6039a56b05",
+  "status": "STAGING_WORKER",
+  "summary": "Independent portfolio lab for RF front-end preparation.",
+  "capabilities": [
+    "Read the preparation scope",
+    "Open the source repository"
+  ],
+  "limitations": [
+    "No Oulu affiliation is claimed",
+    "No hardware fabrication is claimed"
+  ],
+  "sourceUrl": "https://github.com/gunnchOS3k/oulu-rf-front-end-lab",
+  "returnUrlEnv": "GUNNCHOS_PORTAL_URL",
+  "returnUrl": "https://gunnchos-site.gunnchos-finds.workers.dev",
+  "workerName": "gunnchos-oulu-rf"
+}
