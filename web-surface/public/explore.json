@@ -108,5 +108,6 @@
   "methods": "Methods are the formulas in src/gunnchos_rf/link_budget.py and lna_noise_gain.py. The numbers on this page are copied from results/tables/link_budget.md and results/tables/lna_tradeoff.md. They are calculated reference lines, not a measured link.",
   "cards": [],
   "runtime_mode": "PRECOMPUTED",
-  "runtime_boot": false
+  "runtime_boot": false,
+  "evidence_class": "REFERENCE_IMPLEMENTATION"
 }
